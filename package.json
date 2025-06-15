@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node .next/standalone/server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@types/node": "24.0.1",
+    "@types/react": "19.1.8",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "15.3.3",
+    "prettier": "^3.5.3",
+    "typescript": "5.8.3"
+  }
+}
