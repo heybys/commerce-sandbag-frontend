@@ -1,8 +1,13 @@
 {
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "node .next/standalone/server.js",
+    "build:dev": "next scripts/build.mjs --env development",
+    "build:stg": "next scripts/build.mjs --env stage",
+    "build:prd": "next scripts/build.mjs --env production",
+    "start": "node scripts/start.mjs --port 3000",
+    "launch:dev": "node scripts/launcher.mjs --env development --port 3000",
+    "launch:stg": "node scripts/launcher.mjs --env stage --port 3000",
+    "launch:prd": "node scripts/launcher.mjs --env production --port 3000",
     "lint": "next lint"
   },
   "dependencies": {
@@ -14,6 +19,8 @@
     "@eslint/eslintrc": "^3.3.1",
     "@types/node": "24.0.1",
     "@types/react": "19.1.8",
+    "commander": "^14.0.0",
+    "dotenv-flow": "^4.1.0",
     "eslint": "^9.29.0",
     "eslint-config-next": "15.3.3",
     "prettier": "^3.5.3",
