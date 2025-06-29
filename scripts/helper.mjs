@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import {spawn} from "child_process";
+import { spawn } from 'child_process';
 
 export function run(cmd, args, opts = {}) {
-  console.log(`→ ${cmd} ${args.join(' ')}`);
+  console.log(`\x1b[34m→\x1b[0m ${cmd} ${args.join(' ')}`);
 
   return new Promise((resolve, reject) => {
     const childProcess = spawn(cmd, args, { stdio: 'inherit', ...opts });

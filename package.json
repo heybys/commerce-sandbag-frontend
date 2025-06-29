@@ -1,13 +1,8 @@
 {
   "scripts": {
-    "dev": "next dev",
-    "build:dev": "node scripts/build.mjs --env development",
-    "build:stg": "node scripts/build.mjs --env stage",
-    "build:prd": "node scripts/build.mjs --env production",
+    "local": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
     "start": "node scripts/start.mjs --port 3000",
-    "launch:dev": "pnpm run build:dev && pnpm run start",
-    "launch:stg": "pnpm run build:stg && pnpm run start",
-    "launch:prd": "pnpm run build:prd && pnpm run start",
     "lint": "next lint"
   },
   "dependencies": {
