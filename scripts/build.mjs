@@ -30,16 +30,28 @@ console.log(`▶ Loaded .env for NODE_ENV="${ENV}"\n`);
     // build
     await run('next', ['build'], { env: { ...process.env } });
 
-    // check output
-    const svr = path.join('.next', 'standalone', 'server.js');
-    if (fs.existsSync(svr)) {
-      const sizeMB = (fs.statSync(svr).size / 1024 / 1024).toFixed(2);
-      console.log(`ℹ️  standalone/server.js: ${sizeMB} MB`);
+    const standaloneDir = path.join('.next', 'standalone');
+
+    const publicSrc = path.join(process.cwd(), 'public');
+    const publicDest = path.join(standaloneDir, 'public');
+    if (fs.existsSync(publicSrc)) {
+      await run('cp', ['-r', publicSrc, publicDest]);
     }
 
-    console.log('\n✅ Finished build Next.js standalone!');
+    const staticSrc = path.join(process.cwd(), '.next', 'static');
+    const staticDest = path.join(standaloneDir, '.next', 'static');
+    if (fs.existsSync(staticSrc)) {
+      await run('cp', ['-r', staticSrc, staticDest]);
+    }
+
+    const svr = path.join(standaloneDir, 'server.js');
+    if (fs.existsSync(svr)) {
+      const sizeMB = (fs.statSync(svr).size / 1024 / 1024).toFixed(2);
+      console.log(`ℹ️ standalone/server.js: ${sizeMB} MB\n`);
+    }
+    console.log('✅ Finished build Next.js standalone!');
   } catch (err) {
-    console.error(`\n❌ Error: ${err.message}`);
+    console.error(`❌ Error: ${err.message}`);
     process.exit(1);
   }
 })();

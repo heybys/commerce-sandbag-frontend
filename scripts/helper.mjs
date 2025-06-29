@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {spawn} from "child_process";
 
 export function run(cmd, args, opts = {}) {

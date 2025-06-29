@@ -2,7 +2,6 @@
 
 import { run } from './helper.mjs';
 import { Command, Option } from 'commander';
-import path from 'path';
 
 const program = new Command();
 program.name('start');
@@ -14,10 +13,7 @@ const { port: PORT } = program.opts();
 
 (async () => {
   try {
-    // const serverPath = path.join('.next', 'standalone', 'server.js');
     await run('node', ['.next/standalone/server.js', '--port', PORT]);
-    // const serverPath = path.join('./node_modules/.bin/next', 'start');
-    // await run('node', [serverPath, '-p', PORT]);
 
     console.log('\n✅ Finished start Next.js standalone!');
   } catch (err) {
