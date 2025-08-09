@@ -14,12 +14,12 @@ program.addOption(
 );
 program.parse(process.argv);
 
-const { env: ENV } = program.opts();
+let { env: ENV } = program.opts();
 
 if (!ENV) {
-  console.error("\x1b[31m✘\x1b[0m error: required option \'-e, --env <env>\' not specified\n");
-  program.help();
-  process.exit(1);
+  ENV = 'on-local';
+  console.log('\x1b[33m!\x1b[0m No environment specified, defaulting to \'on-local\'');
+  console.log('\x1b[36mi\x1b[0m To use other environments, run with: -e dev | -e stg | -e prd\n');
 }
 
 (async () => {
