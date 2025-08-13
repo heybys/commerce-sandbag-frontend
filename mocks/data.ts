@@ -1,4 +1,3 @@
-// mocks/data.ts
 import type { Product, Category } from '@/lib/types';
 
 export const categories: Category[] = [

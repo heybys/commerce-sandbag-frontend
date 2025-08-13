@@ -1,8 +1,7 @@
-// mocks/handlers.ts
 import { http, HttpResponse } from 'msw';
-import { categories, products } from '@mocks/data';
+import { products } from '@mocks/data';
 
-export const handlers = [
+export const productsHandlers = [
   http.get('/api/products', ({ request }) => {
     const url = new URL(request.url);
     const page = Number(url.searchParams.get('page') ?? 1);
@@ -21,9 +20,5 @@ export const handlers = [
   http.get('/api/products/:id', ({ params }) => {
     const item = products.find((p) => p.id === params.id);
     return item ? HttpResponse.json(item) : new HttpResponse(null, { status: 404 });
-  }),
-
-  http.get('/api/categories', () => {
-    return HttpResponse.json({ items: categories });
   }),
 ];
