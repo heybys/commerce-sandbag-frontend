@@ -4,13 +4,34 @@ import NavigationLayout from '@components/layouts/navigation-layout';
 
 export default async function AboutPage() {
   const product = await apiGet<Product>('/api/products/1');
-  const data = await apiGet<Paginated<Product>>('/api/products?page=1&pageSize=10');
+  const data = await apiGet<Paginated<Product>>('/api/products?page=1&pageSize=20');
 
   return (
     <NavigationLayout>
       <main className="p-4 space-y-4">
         <h1 className="text-xl font-semibold">대표 상품</h1>
-        <div>{JSON.stringify(product, null, 4)}</div>
+        <div>
+          {product ? (
+            <>
+              <img src={product.imageUrl} alt={product.name} className="aspect-square object-cover rounded" />
+              <div className="mt-2 text-sm line-clamp-2">{product.name}</div>
+              <div className="mt-1 font-semibold">
+                {product.priceSale ? (
+                  <>
+                    <span className="text-primary">{product.priceSale.toLocaleString()}원</span>
+                    <span className="ml-2 line-through text-muted-foreground text-xs">
+                      {product.price.toLocaleString()}원
+                    </span>
+                  </>
+                ) : (
+                  <span>{product.price.toLocaleString()}원</span>
+                )}
+              </div>
+            </>
+          ) : (
+            <div>Loading...</div>
+          )}
+        </div>
         <h1 className="text-xl font-semibold">상품 목록</h1>
         <ul className="grid grid-cols-2 gap-3">
           {data?.items?.map((p) => (
