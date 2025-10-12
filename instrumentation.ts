@@ -1,13 +1,8 @@
 export async function register() {
-  // Node 런타임에서만 초기화 (Edge 번들에서는 이 블록이 제거됨)
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    try {
-      const { initServerMSW } = await import('./mocks/server/init');
-      initServerMSW();
-    } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('[MSW] Failed to initialize in instrumentation:', error);
-      }
-    }
+    const { server } = await import('@mocks/server');
+
+    server.listen({ onUnhandledRequest: 'warn' });
+    console.log('\x1b[32m ✓ \x1b[0m\x1b[33m[MSW]\x1b[0m Server mocking enabled (Node runtime)');
   }
 }

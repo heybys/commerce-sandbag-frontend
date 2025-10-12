@@ -1,9 +1,9 @@
 #!/usr/bin/env node
+import { Command, Option } from 'commander';
+import fs from 'fs';
+import path from 'path';
 
 import { run } from './helper.mjs';
-import { Command, Option } from 'commander';
-import path from 'path';
-import fs from 'fs';
 
 const program = new Command();
 program.name('pnpm run start');

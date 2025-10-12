@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  // return NextResponse.redirect(new URL('/home', request.url));
+  console.log('[Middleware] Request URL:', request.url);
+  console.log('[Middleware] Next URL:', request.nextUrl.pathname);
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/about/:path*'],
+  matcher: ['/:path*'],
+  transpilePackages: ['msw'],
   skipTrailingSlashRedirect: true,
   skipMiddlewareUrlNormalize: true,
 };

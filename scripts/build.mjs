@@ -1,11 +1,11 @@
 #!/usr/bin/env node
+import { Command, Option } from 'commander';
+import * as dotenvFlow from 'dotenv-flow';
+import fs from 'fs';
+import { cp } from 'node:fs/promises';
+import path from 'path';
 
 import { run } from './helper.mjs';
-import { Command, Option } from 'commander';
-import fs from 'fs';
-import path from 'path';
-import * as dotenvFlow from 'dotenv-flow';
-import { cp } from 'node:fs/promises';
 
 const ENVIRONMENTS = ['on-local', 'dev', 'stg', 'prd'];
 
