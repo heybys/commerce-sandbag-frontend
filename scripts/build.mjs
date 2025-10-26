@@ -1,11 +1,10 @@
 #!/usr/bin/env node
+import { run } from './helper.mjs';
 import { Command, Option } from 'commander';
 import * as dotenvFlow from 'dotenv-flow';
 import fs from 'fs';
 import { cp } from 'node:fs/promises';
 import path from 'path';
-
-import { run } from './helper.mjs';
 
 const ENVIRONMENTS = ['on-local', 'dev', 'stg', 'prd'];
 

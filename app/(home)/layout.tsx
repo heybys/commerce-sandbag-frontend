@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react';
 
-import { NavigationHeader } from '@widgets/header/ui';
+import { NavigationHeader, PageLayout } from '@widgets/common/ui';
 
-export default function Layout({ children }: PropsWithChildren) {
+export default function Layout({ children }: Readonly<PropsWithChildren>) {
   return (
     <>
       <NavigationHeader />
-      <div className="pt-16">{children}</div>
+      <PageLayout>{children}</PageLayout>
     </>
   );
 }

@@ -1,8 +1,7 @@
 #!/usr/bin/env node
+import { run } from './helper.mjs';
 import { Command, Option } from 'commander';
 import { cp } from 'node:fs/promises';
-
-import { run } from './helper.mjs';
 
 const ENVIRONMENTS = ['on-local', 'dev', 'stg', 'prd'];
 

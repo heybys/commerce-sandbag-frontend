@@ -1,10 +1,9 @@
-import { HttpResponse, http } from 'msw';
-
 import { Paginated, ResponseBody } from '@shared/types';
 
 import { Product } from '@entities/product';
 
 import { products } from './data';
+import { HttpResponse, http } from 'msw';
 
 const handlers = [
   http.get(`http://localhost:8080/api/products`, ({ request }) => {

@@ -14,7 +14,7 @@ export default async function AboutPage() {
     errorMessage = (e as BusinessError).message;
   }
   try {
-    paginatedProducts = await productApi.getProducts(2, 20);
+    paginatedProducts = await productApi.getProducts(1, 20);
   } catch (e: unknown) {
     errorMessage2 = (e as BusinessError).message;
   }
